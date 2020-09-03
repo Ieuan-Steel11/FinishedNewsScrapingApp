@@ -140,7 +140,3 @@ def getGeneratedArticle():
 def createDB():
     insertTweetsInTable()
     insertArticlesInTable()
-
-
-while True:
-    createDB()
