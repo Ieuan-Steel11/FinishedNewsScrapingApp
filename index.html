@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Scraper</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+{% block content %}
+<body>
+    <div class="jumbotron text-center bg-light-grey mb-0">
+        <h1>News Scraper</h1>
+        <p>
+            This is a web scraper that gathers article overviews using the free development version of NewsAPI
+        </p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" name="home" href="index">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="search">search</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid center bg-dark text-white mb-0">
+        <h2 style="padding-top: 30px; padding-bottom: 30px; text-align: center">Random Scraped Article</h2>
+    </div>
+    <div class="container-fluid text-center">
+        <h4 style="padding-top: 15px; padding-bottom: 15px">{{ title }}</h4>
+        <hr class="mb-0">
+        <h4 style="padding-top: 10px">
+            by {{ author }} at {{ news_source }}, {{ date }}
+        </h4>
+        <h4>link to full article link: <a href="{{ link }}" target="_blank">Full Article</a></h4>
+        <hr>
+        <h5> Description </h5>
+        <p>{{ description }}</p>
+        <form>
+            <input type="submit" value="Generate New Article" name="new_article" class="alert alert-primary">
+        </form>
+    </div>
+    </div>
+    <div class="container-fluid center bg-dark text-white mb-0">
+        <h2 style="padding-top: 30px; padding-bottom: 30px; text-align: center">Random Scraped Tweet</h2>
+    </div>
+    <div class="container-fluid text-center">
+        <h4 style="padding-top: 10px">
+            by {{ user }}
+        </h4>
+        <h4>link to Tweeter's profile: <a href="{{ url }}" target="_blank">Profile</a></h4>
+        <hr>
+        <h5> Tweet </h5>
+        <p>{{ text }}</p>
+        <form>
+            <input type="submit" value="Generate New Tweet" name="new_tweet" class="alert alert-primary">
+        </form>
+    </div>
+</body>
+{% endblock %}
+</html>
