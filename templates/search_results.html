@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+{% block content %}
+<body>
+    <div class="jumbotron text-center bg-light-grey mb-0">
+        <h1>Search</h1>
+        <p>
+            This is a web scraper that gathers article overviews using the free development version of NewsAPI
+        </p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light blue-grey lighten-5 mb-4">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav navbar-nav pull-sm-left">
+          </ul>
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
+          </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="search">search</a>
+          </li>
+        </ul>
+          <ul class="nav navbar-nav pull-sm-right">
+          </ul>
+      </div>
+    </nav>
+    <div class="container-fluid text-center bg-light mb-0">
+        <h1>Search Results</h1>
+    </div>
+    <div>
+        {% for scraped_article in scraped_articles %}
+            <div class="container-fluid center bg-dark text-white mb-0">
+                <h2 style="padding-top: 30px; padding-bottom: 30px; text-align: center">Article</h2>
+            </div>
+            <div class="container-fluid text-center" style="padding-bottom: 35px">
+                <h4 style="padding-top: 15px; padding-bottom: 15px">{{ tech_articles.getArticleTitle(scraped_article) }}</h4>
+                <hr class="mb-0">
+                <h4 style="padding-top: 10px">
+                    by {{ tech_articles.getArticleAuthor(scraped_article) }},
+                    {{ tech_articles.getArticleDate(scraped_article) }}
+                </h4>
+                <h4>link to full article link: <a href="{{ tech_articles.getArticleUrl(scraped_article) }}" target="_blank">Full Article</a></h4>
+                <hr>
+                <h5> Description </h5>
+                <p>{{ tech_articles.getArticleDescription(scraped_article) }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% for scraped_tweet in scraped_tweets %}
+            <div class="container-fluid center bg-dark text-white mb-0">
+                <h2 style="padding-top: 30px; padding-bottom: 30px; text-align: center">Random Scraped Tweet</h2>
+            </div>
+            <div class="container-fluid text-center">
+                <h4 style="padding-top: 10px">
+                    by {{ tech_tweets.getDisplayTweet(scraped_tweet)[0] }}
+                </h4>
+                <h4>link to Tweeter's profile: <a href="{{ tech_tweets.getDisplayTweet(scraped_tweet)[1] }}" target="_blank">Profile</a></h4>
+                <hr>
+                <h5> Tweet </h5>
+                <p>{{ tech_tweets.getDisplayTweet(scraped_tweet)[2] }}</p>
+            </div>
+        {% endfor %}
+        {% if not scraped_tweets and not scraped_articles %}
+            <div class="container-fluid text-center bg-light mb-0">
+                <h1>No results</h1>
+            </div>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}
+</html>
