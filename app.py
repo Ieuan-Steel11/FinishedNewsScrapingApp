@@ -6,7 +6,7 @@ from database import (createDB, getSearchedArticles, getSearchedTweets,
 
 app = Flask(__name__)
 cmp.Compress(app)
-app.secret_key = b"/[fds]se3dljS,:@ghQi)czl'`lh#'>uh<@jt6}7ifd5^&O9R]FDt?yK^|&i;dU78gk*o"
+app.secret_key = b"SECRET_KEY"
 bt.Bootstrap(app)
 
 
