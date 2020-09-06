@@ -2,7 +2,7 @@ from random import choice
 from newsapi import NewsApiClient
 import tweepy
 
-newsapi = NewsApiClient(api_key='87914a8d69804228bd7bcd9fa071398f')
+newsapi = NewsApiClient(api_key='SECRET')
 
 
 class TechArticles:
@@ -106,8 +106,8 @@ class TechTweets:
     twitter_search_query = "news -filter:retweets"
     # search query for twitter
 
-    consumer_api_key = "ER34OJhTk5TYjWwpQOYFywBCz"
-    consumer_secret_api_key = "agVcswttXpeLN8uLiUaTgyVgQuq85kxG8V3iOlBu81Kt8SBi1U"
+    consumer_api_key = "SECRET"
+    consumer_secret_api_key = "SECRET"
     # twitter developer api keys
 
     auth = tweepy.OAuthHandler(consumer_api_key, consumer_secret_api_key)
